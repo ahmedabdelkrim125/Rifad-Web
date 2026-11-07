@@ -1,0 +1,35 @@
+.sparkle {
+  position: absolute;
+  z-index: 21;
+  aspect-ratio: 1;
+  color: var(--color-gold-300);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  animation: twinkle 3.6s ease-in-out var(--delay) infinite;
+}
+
+.sparkle svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 6px rgb(236 213 138 / 0.9));
+}
+
+@keyframes twinkle {
+  0%,
+  60%,
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+  }
+  78% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle {
+    display: none;
+  }
+}

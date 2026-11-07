@@ -1,0 +1,106 @@
+@property --wipe {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+:root {
+  --vt-ease: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(site-header) {
+  animation-duration: 0s;
+}
+
+::view-transition-old(.page-forward-out) {
+  --leave-x: 64px;
+  animation: 480ms var(--vt-ease) both page-leave;
+}
+
+::view-transition-old(.page-back-out) {
+  --leave-x: -64px;
+  animation: 480ms var(--vt-ease) both page-leave;
+}
+
+::view-transition-old(.page-fade-out) {
+  --leave-x: 0px;
+  animation: 320ms ease-in both page-leave;
+}
+
+::view-transition-new(.page-forward-in) {
+  --enter-x: -72px;
+  --wipe-dir: to left;
+  animation:
+    900ms var(--vt-ease) 140ms both page-wipe,
+    900ms var(--vt-ease) 140ms both page-arrive;
+  mask-image: linear-gradient(
+    var(--wipe-dir),
+    #000 var(--wipe),
+    transparent calc(var(--wipe) + 26%)
+  );
+}
+
+::view-transition-new(.page-back-in) {
+  --enter-x: 72px;
+  --wipe-dir: to right;
+  animation:
+    900ms var(--vt-ease) 140ms both page-wipe,
+    900ms var(--vt-ease) 140ms both page-arrive;
+  mask-image: linear-gradient(
+    var(--wipe-dir),
+    #000 var(--wipe),
+    transparent calc(var(--wipe) + 26%)
+  );
+}
+
+::view-transition-new(.page-fade-in) {
+  --enter-x: 0px;
+  animation: 600ms var(--vt-ease) 120ms both page-arrive;
+}
+
+@keyframes page-leave {
+  to {
+    opacity: 0;
+    translate: var(--leave-x) 0;
+    scale: 0.985;
+    filter: blur(6px);
+  }
+}
+
+@keyframes page-wipe {
+  from {
+    --wipe: -26%;
+  }
+  to {
+    --wipe: 100%;
+  }
+}
+
+@keyframes page-arrive {
+  from {
+    translate: var(--enter-x) 24px;
+    filter: blur(4px);
+  }
+  to {
+    translate: 0 0;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+    mask-image: none !important;
+  }
+}

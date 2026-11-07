@@ -1,0 +1,196 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--color-cream-50);
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  max-width: 90rem;
+  margin-inline: auto;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  }
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  justify-items: center;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .copy {
+    justify-items: stretch;
+    text-align: center;
+  }
+}
+
+.title {
+  margin: 0;
+  color: var(--color-burgundy-900);
+  font-size: clamp(3rem, 7.4vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-block: 0.25em;
+  margin-block: -0.25em;
+}
+
+.word {
+  display: inline-block;
+  transform: translateY(120%);
+  animation: wordRise 1s var(--ease-out-expo) 0.15s forwards;
+}
+
+.lead {
+  max-width: 34rem;
+  margin: 0;
+  margin-inline: auto;
+  color: var(--color-burgundy-800);
+  font-size: clamp(1.1rem, 2.1vw, 1.9rem);
+  font-weight: 500;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-out-expo) 0.45s both;
+}
+
+.search {
+  width: 100%;
+  opacity: 0;
+  animation: fadeUp 0.9s var(--ease-out-expo) 0.65s both;
+}
+
+.visual {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  max-width: 62rem;
+  margin-inline: auto;
+}
+
+.enter {
+  display: block;
+  animation: reveal 1.5s var(--ease-out-expo) 0.25s both;
+}
+
+.stage {
+  position: relative;
+  display: block;
+  aspect-ratio: 1400 / 595;
+  animation: float 7s ease-in-out 2.2s infinite;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.glint {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background-image: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgb(255 248 228 / 0.7) 50%,
+    transparent 62%
+  );
+  background-size: 320% 100%;
+  background-repeat: no-repeat;
+  background-position: 120% 0;
+  -webkit-mask-image: url('/shop/hero.webp');
+  mask-image: url('/shop/hero.webp');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: glint 7s ease-in-out 2.4s infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wordRise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(-20% -20% -20% 120%);
+    transform: translateX(6%) scale(1.08);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(-20% -20% -20% -20%);
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.1%);
+  }
+}
+
+@keyframes glint {
+  0% {
+    background-position: 120% 0;
+  }
+  40%,
+  100% {
+    background-position: -120% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word,
+  .lead,
+  .search,
+  .enter,
+  .stage {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+
+  .glint {
+    display: none;
+  }
+}

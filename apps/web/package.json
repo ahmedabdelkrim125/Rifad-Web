@@ -1,0 +1,30 @@
+{
+  "name": "@rifad/web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "next typegen && tsc --noEmit"
+  },
+  "dependencies": {
+    "@rifad/supabase": "workspace:*",
+    "@rifad/tokens": "workspace:*",
+    "@rifad/ui": "workspace:*",
+    "@rifad/validators": "workspace:*",
+    "lucide-react": "^0.545.0",
+    "next": "^16.0.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@rifad/config": "workspace:*",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
+  }
+}

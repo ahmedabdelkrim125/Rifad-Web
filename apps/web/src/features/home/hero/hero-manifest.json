@@ -1,0 +1,116 @@
+{
+  "width": 1937,
+  "height": 575,
+  "layers": [
+    {
+      "id": "arc_left",
+      "file": "arc_left.webp",
+      "left": 0.0,
+      "top": 58.6087,
+      "width": 23.3351,
+      "height": 41.3913,
+      "w": 452,
+      "h": 238
+    },
+    {
+      "id": "arc_right",
+      "file": "arc_right.webp",
+      "left": 91.8947,
+      "top": 0.0,
+      "width": 8.1053,
+      "height": 32.5217,
+      "w": 157,
+      "h": 187
+    },
+    {
+      "id": "base",
+      "file": "base.webp",
+      "left": 25.7099,
+      "top": 81.7391,
+      "width": 40.2168,
+      "height": 10.7826,
+      "w": 779,
+      "h": 62
+    },
+    {
+      "id": "ribbon_left",
+      "file": "ribbon_left.webp",
+      "left": 9.9122,
+      "top": 58.9565,
+      "width": 15.7976,
+      "height": 35.4783,
+      "w": 306,
+      "h": 204
+    },
+    {
+      "id": "ribbon_right",
+      "file": "ribbon_right.webp",
+      "left": 65.9267,
+      "top": 31.1304,
+      "width": 32.5761,
+      "height": 62.9565,
+      "w": 631,
+      "h": 362
+    },
+    {
+      "id": "lamp",
+      "file": "lamp.webp",
+      "left": 17.7078,
+      "top": 11.6522,
+      "width": 18.2757,
+      "height": 70.087,
+      "w": 354,
+      "h": 403
+    },
+    {
+      "id": "headphones",
+      "file": "headphones.webp",
+      "left": 35.9835,
+      "top": 2.6087,
+      "width": 21.9928,
+      "height": 79.6522,
+      "w": 426,
+      "h": 458
+    },
+    {
+      "id": "sneaker",
+      "file": "sneaker.webp",
+      "left": 66.9076,
+      "top": 26.9565,
+      "width": 29.5302,
+      "height": 52.1739,
+      "w": 572,
+      "h": 300
+    },
+    {
+      "id": "bottle",
+      "file": "bottle.webp",
+      "left": 56.3758,
+      "top": 8.1739,
+      "width": 10.5318,
+      "height": 74.087,
+      "w": 204,
+      "h": 426
+    },
+    {
+      "id": "watch",
+      "file": "watch.webp",
+      "left": 29.1688,
+      "top": 59.1304,
+      "width": 13.4744,
+      "height": 29.5652,
+      "w": 261,
+      "h": 170
+    },
+    {
+      "id": "airpods",
+      "file": "airpods.webp",
+      "left": 66.2364,
+      "top": 62.4348,
+      "width": 10.1704,
+      "height": 29.913,
+      "w": 197,
+      "h": 172
+    }
+  ]
+}
