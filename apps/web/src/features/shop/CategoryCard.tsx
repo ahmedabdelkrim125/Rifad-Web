@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { cn } from '@rifad/ui';
 import { TransitionLink } from '@/components/navigation/TransitionLink';
 import type { Category } from '@/config/categories';
@@ -10,11 +11,13 @@ type CategoryCardProps = {
 };
 
 export function CategoryCard({ category, href }: CategoryCardProps) {
+  const t = useTranslations('categories.names');
+
   return (
     <TransitionLink href={href} className={cn(styles.card)}>
       <CategoryIcon name={category.icon} className={cn(styles.icon, 'size-14 text-burgundy-700')} />
       <span className="text-base font-semibold leading-snug text-burgundy-900">
-        {category.name}
+        {t(category.nameKey)}
       </span>
     </TransitionLink>
   );

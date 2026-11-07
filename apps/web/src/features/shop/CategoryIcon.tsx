@@ -1,9 +1,15 @@
 import {
   Baby,
+  BookOpen,
+  CarFront,
   Dumbbell,
   Ellipsis,
   Headphones,
+  LayoutGrid,
+  Luggage,
+  PawPrint,
   Shirt,
+  ShoppingBasket,
   Sofa,
   Sparkles,
   type LucideIcon,
@@ -17,6 +23,12 @@ const icons: Record<CategoryIconKey, LucideIcon> = {
   baby: Baby,
   sparkles: Sparkles,
   dumbbell: Dumbbell,
+  paw: PawPrint,
+  basket: ShoppingBasket,
+  luggage: Luggage,
+  car: CarFront,
+  book: BookOpen,
+  grid: LayoutGrid,
   ellipsis: Ellipsis,
 };
 

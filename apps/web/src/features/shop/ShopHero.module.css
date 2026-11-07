@@ -178,6 +178,23 @@
   }
 }
 
+@keyframes revealLtr {
+  from {
+    opacity: 0;
+    clip-path: inset(-20% 120% -20% -20%);
+    transform: translateX(-6%) scale(1.08);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(-20% -20% -20% -20%);
+    transform: translateX(0) scale(1);
+  }
+}
+
+:global([dir='ltr']) .enter {
+  animation-name: revealLtr;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .word,
   .lead,
@@ -192,5 +209,9 @@
 
   .glint {
     display: none;
+  }
+
+  :global([dir='ltr']) .enter {
+    animation: none;
   }
 }

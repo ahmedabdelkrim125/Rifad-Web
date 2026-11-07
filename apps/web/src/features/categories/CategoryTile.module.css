@@ -1,0 +1,180 @@
+.tile {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 0.5rem;
+  height: 100%;
+  padding: clamp(0.75rem, 1.6vw, 1.1rem);
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    165deg,
+    var(--color-cream-50),
+    color-mix(in oklab, var(--color-cream-200) 72%, var(--color-burgundy-100))
+  );
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.8) inset,
+    0 10px 24px -16px rgb(112 17 39 / 0.35);
+  color: var(--color-burgundy-800);
+  transition:
+    transform 0.5s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo);
+}
+
+.tile::after {
+  content: '';
+  position: absolute;
+  inset-inline: 22%;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-gold-500);
+  transform: scaleX(0);
+  transition: transform 0.5s var(--ease-out-expo);
+}
+
+.tile:hover,
+.tile:focus-visible {
+  transform: translateY(-6px);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.8) inset,
+    0 22px 32px -18px rgb(112 17 39 / 0.5);
+}
+
+.tile:hover::after,
+.tile:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+}
+
+.media::before {
+  content: '';
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(225 194 90 / 0.28), transparent 70%);
+}
+
+.icon {
+  position: relative;
+  width: clamp(3.25rem, 7vw, 4.75rem);
+  height: clamp(3.25rem, 7vw, 4.75rem);
+  color: var(--color-burgundy-700);
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.tile:hover .icon,
+.tile:focus-visible .icon,
+.tile:hover .photo,
+.tile:focus-visible .photo {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+.name {
+  text-align: center;
+  color: var(--color-burgundy-900);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  min-height: 2rem;
+}
+
+.count {
+  color: var(--color-ink-500);
+  font-size: clamp(0.78rem, 1.2vw, 0.9rem);
+}
+
+.go {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1.5px solid var(--color-gold-500);
+  border-radius: 50%;
+  background: var(--color-cream-50);
+  color: var(--color-burgundy-700);
+  transition:
+    background-color 0.4s var(--ease-out-expo),
+    color 0.4s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo);
+}
+
+.tile:hover .go,
+.tile:focus-visible .go {
+  background: var(--color-burgundy-700);
+  color: var(--color-cream-50);
+  transform: translateX(-3px);
+}
+
+:global([dir='ltr']) .tile:hover .go,
+:global([dir='ltr']) .tile:focus-visible .go {
+  transform: translateX(3px);
+}
+
+/* translate/scale (خصائص مستقلة) كي لا تلغي حركة الدخول تأثير الـ hover */
+@supports (animation-timeline: view()) {
+  .tile {
+    animation: tileIn linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+
+@keyframes tileIn {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+    scale: 0.94;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    animation: none;
+  }
+
+  .tile,
+  .icon,
+  .photo,
+  .go {
+    transition: none;
+  }
+
+  .tile:hover,
+  .tile:focus-visible,
+  .tile:hover .icon,
+  .tile:focus-visible .icon,
+  .tile:hover .photo,
+  .tile:focus-visible .photo,
+  .tile:hover .go,
+  .tile:focus-visible .go {
+    transform: none;
+  }
+}

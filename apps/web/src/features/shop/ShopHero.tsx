@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Sparkle } from '@/components/motion/Sparkle';
 import { ShopSearch } from './ShopSearch';
 import styles from './ShopHero.module.css';
@@ -12,16 +13,18 @@ const sparkles = [
 ];
 
 export function ShopHero() {
+  const t = useTranslations('shop');
+
   return (
     <section className={styles.section} aria-labelledby="shop-title">
       <div className={styles.grid}>
         <div className={styles.copy}>
           <h1 id="shop-title" className={styles.title}>
             <span className={styles.mask}>
-              <span className={styles.word}>تسوّق الآن</span>
+              <span className={styles.word}>{t('title')}</span>
             </span>
           </h1>
-          <p className={styles.lead}>اكتشف أفضل المنتجات من مختلف الفئات في مكان واحد</p>
+          <p className={styles.lead}>{t('lead')}</p>
           <div className={styles.search}>
             <ShopSearch />
           </div>

@@ -1,7 +1,8 @@
 import { Headset, RefreshCw, ShieldCheck, Truck, type LucideIcon } from 'lucide-react';
-import { siteConfig } from '@/config/site';
+import { useTranslations } from 'next-intl';
+import { siteConfig, type TrustId } from '@/config/site';
 
-const icons: Record<(typeof siteConfig.trust)[number]['id'], LucideIcon> = {
+const icons: Record<TrustId, LucideIcon> = {
   shipping: Truck,
   payment: ShieldCheck,
   support: Headset,
@@ -9,14 +10,17 @@ const icons: Record<(typeof siteConfig.trust)[number]['id'], LucideIcon> = {
 };
 
 export function ShopTrust() {
+  const t = useTranslations('trust');
+  const a11y = useTranslations('a11y');
+
   return (
-    <section aria-label="مزايا رِفاد" className="mx-auto max-w-[90rem] px-5 md:px-10">
+    <section aria-label={a11y('trustLabel')} className="mx-auto max-w-[90rem] px-5 md:px-10">
       <ul className="grid grid-cols-1 gap-y-6 rounded-3xl bg-cream-200/60 px-6 py-7 ring-1 ring-cream-300/70 sm:grid-cols-2 lg:grid-cols-4 lg:gap-y-0 lg:px-10">
-        {siteConfig.trust.map((item) => {
-          const Icon = icons[item.id];
+        {siteConfig.trust.map((id) => {
+          const Icon = icons[id];
           return (
             <li
-              key={item.id}
+              key={id}
               className="flex items-center gap-4 lg:border-s lg:border-cream-300 lg:ps-8 lg:first:border-s-0 lg:first:ps-0"
             >
               <Icon
@@ -25,8 +29,8 @@ export function ShopTrust() {
                 aria-hidden="true"
               />
               <span className="grid">
-                <span className="text-lg font-semibold text-burgundy-900">{item.title}</span>
-                <span className="text-sm text-ink-500">{item.detail}</span>
+                <span className="text-lg font-semibold text-burgundy-900">{t(`${id}.title`)}</span>
+                <span className="text-sm text-ink-500">{t(`${id}.detail`)}</span>
               </span>
             </li>
           );

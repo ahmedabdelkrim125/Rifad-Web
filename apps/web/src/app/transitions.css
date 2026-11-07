@@ -67,6 +67,24 @@
   animation: 600ms var(--vt-ease) 120ms both page-arrive;
 }
 
+:root[dir='ltr']::view-transition-old(.page-forward-out) {
+  --leave-x: -64px;
+}
+
+:root[dir='ltr']::view-transition-old(.page-back-out) {
+  --leave-x: 64px;
+}
+
+:root[dir='ltr']::view-transition-new(.page-forward-in) {
+  --enter-x: 72px;
+  --wipe-dir: to right;
+}
+
+:root[dir='ltr']::view-transition-new(.page-back-in) {
+  --enter-x: -72px;
+  --wipe-dir: to left;
+}
+
 @keyframes page-leave {
   to {
     opacity: 0;

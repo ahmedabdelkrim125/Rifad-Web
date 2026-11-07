@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { TransitionLink } from '@/components/navigation/TransitionLink';
 import { PointerParallax } from '@/components/motion/PointerParallax';
 import { buttonVariants } from '@rifad/ui';
@@ -7,19 +8,21 @@ import { HeroWords } from './HeroWords';
 import styles from './Hero.module.css';
 
 export function Hero() {
+  const t = useTranslations('hero');
+
   return (
     <section className={styles.section} aria-labelledby="hero-title">
       <PointerParallax className={styles.inner}>
-        <p className={styles.eyebrow}>اكتشف عالم رفاد</p>
+        <p className={styles.eyebrow}>{t('eyebrow')}</p>
         <h1 id="hero-title" className={styles.title}>
-          <HeroWords text="كل ما تحتاجه" position="top" />
+          <HeroWords text={t('line1')} position="top" />
           <HeroScene />
-          <HeroWords text="في مكان واحد" position="bottom" />
+          <HeroWords text={t('line2')} position="bottom" />
         </h1>
-        <p className={styles.subtitle}>اختيارات مميزة ليومك، من مكان واحد</p>
+        <p className={styles.subtitle}>{t('subtitle')}</p>
         <div className={styles.cta}>
           <TransitionLink href="/shop" className={buttonVariants({ size: 'lg' })}>
-            تسوق الآن
+            {t('cta')}
           </TransitionLink>
         </div>
       </PointerParallax>
